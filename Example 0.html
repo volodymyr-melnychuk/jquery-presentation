@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<span>element</span>
+		<a>element 1</a>
+		<script>
+			
+			$.extend($.expr[':'],{
+				regex: function(elem, index, matches) {
+						var param = matches[3];
+						var regex = new RegExp(param, 'i');
+						
+						return regex.test(elem.tagName);
+					}
+				});
+				
+				$(':regex(a$)').fadeOut(3000, function(){
+					$(this).fadeIn(3000);
+				});
+			
+		</script>
+	</body>
+</html>
